@@ -3,8 +3,6 @@ package edu.uw.piano;
 import android.app.Activity;
 import android.graphics.Rect;
 import android.media.AudioAttributes;
-import android.media.AudioManager;
-import android.media.AudioTrack;
 import android.media.SoundPool;
 import android.os.Build;
 import android.os.Bundle;
@@ -56,65 +54,78 @@ public class MainActivity extends Activity {
         mPool.setOnLoadCompleteListener(new SoundPool.OnLoadCompleteListener() {
             @Override
             public void onLoadComplete(SoundPool soundPool, int sampleId, int status) {
-                if(sampleId == mPianoSounds[0] && status == 0) {
-                    mIsLoaded[0] = true;
-                } else {
-                    mIsLoaded[0] = false;
-                }
-                if(sampleId == mPianoSounds[1] && status == 0) {
-                    mIsLoaded[1] = true;
-                } else {
-                    mIsLoaded[1] = false;
-                }
-                if(sampleId == mPianoSounds[2] && status == 0) {
-                    mIsLoaded[2] = true;
-                } else {
-                    mIsLoaded[2] = false;
-                }
-                if(sampleId == mPianoSounds[3] && status == 0) {
-                    mIsLoaded[3] = true;
-                } else {
-                    mIsLoaded[3] = false;
-                }
-                if(sampleId == mPianoSounds[4] && status == 0) {
-                    mIsLoaded[4] = true;
-                } else {
-                    mIsLoaded[4] = false;
-                }
-                if(sampleId == mPianoSounds[5] && status == 0) {
-                    mIsLoaded[5] = true;
-                } else {
-                    mIsLoaded[5] = false;
-                }
-                if(sampleId == mPianoSounds[6] && status == 0) {
-                    mIsLoaded[6] = true;
-                } else {
-                    mIsLoaded[6] = false;
-                }
-                if(sampleId == mPianoSounds[7] && status == 0) {
-                    mIsLoaded[7] = true;
-                } else {
-                    mIsLoaded[7] = false;
-                }
-                if(sampleId == mPianoSounds[8] && status == 0) {
-                    mIsLoaded[8] = true;
-                } else {
-                    mIsLoaded[8] = false;
-                }
-                if(sampleId == mPianoSounds[9] && status == 0) {
-                    mIsLoaded[9] = true;
-                } else {
-                    mIsLoaded[9] = false;
-                }
-                if(sampleId == mPianoSounds[10] && status == 0) {
-                    mIsLoaded[10] = true;
-                } else {
-                    mIsLoaded[10] = false;
-                }
-                if(sampleId == mPianoSounds[11] && status == 0) {
-                    mIsLoaded[11] = true;
-                } else {
-                    mIsLoaded[11] = false;
+                if(sampleId == mPianoSounds[0]) {
+                    if(status == 0) {
+                        mIsLoaded[0] = true;
+                    } else {
+                        mIsLoaded[0] = false;
+                    }
+                } else if(sampleId == mPianoSounds[1]) {
+                    if(status == 0) {
+                        mIsLoaded[1] = true;
+                    } else {
+                        mIsLoaded[1] = false;
+                    }
+                } else if(sampleId == mPianoSounds[2]) {
+                    if(status == 0) {
+                        mIsLoaded[2] = true;
+                    } else {
+                        mIsLoaded[2] = false;
+                    }
+                }else if(sampleId == mPianoSounds[3]) {
+                    if(status == 0) {
+                        mIsLoaded[3] = true;
+                    } else {
+                        mIsLoaded[3] = false;
+                    }
+                }else if(sampleId == mPianoSounds[4]) {
+                    if(status == 0) {
+                        mIsLoaded[4] = true;
+                    } else {
+                        mIsLoaded[4] = false;
+                    }
+                }else if(sampleId == mPianoSounds[5]) {
+                    if(status == 0) {
+                        mIsLoaded[5] = true;
+                    } else {
+                        mIsLoaded[5] = false;
+                    }
+                }else if(sampleId == mPianoSounds[6]) {
+                    if(status == 0) {
+                        mIsLoaded[6] = true;
+                    } else {
+                        mIsLoaded[6] = false;
+                    }
+                }else if(sampleId == mPianoSounds[7]) {
+                    if(status == 0) {
+                        mIsLoaded[7] = true;
+                    } else {
+                        mIsLoaded[7] = false;
+                    }
+                }else if(sampleId == mPianoSounds[8]) {
+                    if(status == 0) {
+                        mIsLoaded[8] = true;
+                    } else {
+                        mIsLoaded[8] = false;
+                    }
+                }else if(sampleId == mPianoSounds[9]) {
+                    if(status == 0) {
+                        mIsLoaded[9] = true;
+                    } else {
+                        mIsLoaded[9] = false;
+                    }
+                }else if(sampleId == mPianoSounds[10]) {
+                    if(status == 0) {
+                        mIsLoaded[10] = true;
+                    } else {
+                        mIsLoaded[10] = false;
+                    }
+                }else if(sampleId == mPianoSounds[11]) {
+                    if(status == 0) {
+                        mIsLoaded[11] = true;
+                    } else {
+                        mIsLoaded[11] = false;
+                    }
                 }
 
             }
@@ -163,9 +174,12 @@ public class MainActivity extends Activity {
     public void handleTap(int x, int y){
         int key = getPianoKey(x,y); //call helper method to get key number
         Log.v(TAG, "Tapped key: "+KEY_NAMES[key]);
+        Log.v(TAG, "Key int: " + key);
+        Log.v(TAG, "mpool: " + mPool);
 
         //TODO: Play sound depending on key pressed!
         if(mIsLoaded[key]) {
+            Log.v(TAG, key + " is loaded");
             mPool.play(key, 1, 1, 0, 0, 1);
         }
 
